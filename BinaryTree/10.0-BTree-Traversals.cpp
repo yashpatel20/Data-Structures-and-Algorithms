@@ -31,6 +31,21 @@ void postOrder(const unique_ptr<BinaryTreeNode<int>>& root){
     }
 }
 
+//unique ptr error
+//logic is fine
+void bfs(const unique_ptr<BinaryTreeNode<int>>& root){
+    if(root == NULL) return;
+    queue<unique_ptr<BinaryTreeNode<int>>> q;
+    q.push(root);
+    while(!q.empty()){
+        unique_ptr<BinaryTreeNode<int>> node = q.front();q.pop();
+        cout << node->data << " ";
+        if(node->left!=NULL) q.push(node->left);
+        if(node->right!=NULL) q.push(node->right);
+    }
+}
+
+
 int main(){
     unique_ptr<BinaryTreeNode<int>> root = make_unique<BinaryTreeNode<int>>();
     root->data = 2;
@@ -44,4 +59,5 @@ int main(){
     cout <<endl;
     postOrder(root);
     cout <<endl;
+    bfs(root);
 }
