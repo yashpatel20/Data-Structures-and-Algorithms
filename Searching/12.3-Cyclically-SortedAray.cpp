@@ -41,6 +41,7 @@ int searchPivotDuplicates(vector<int> A){
 }
 
 //search for a target in a rotated array
+//<378, 478, 550, 631, 103, 203, 220, 234, 279, 368>
 
 
 
