@@ -9,8 +9,8 @@ using namespace std;
 //sift down : O(logn)
 void sift_down(vector<int>& arr, int i, int n){
     //get left and right 
-    int left = arr[2*i+1];
-    int right = arr[2*i+2];
+    int left = 2*i+1;
+    int right = 2*i+2;
     //check largest index and perform sift up
     int largest = i;
     if(left < n && arr[left] > arr[largest]) largest = left;
