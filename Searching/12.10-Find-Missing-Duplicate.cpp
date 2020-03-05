@@ -19,12 +19,21 @@ int findMissing(vector<int> nums){
 //Given an array of n integers b/w 0 and n-1
 //Exactly one element appears twice, implying exactly one number between 0 and n-1 is missing
 
-pair<int,int> findDuplicateAndMissing(){
+//Brute Force 1 : use a hash table to keep track of duplicae, for missing iterate over the hashmap and find the missing
+//Time and Space : O(n)
+
+//Brute Force 2 : sort then iterate, find duplicate and missing
+//Time : O(nlogn) Space : O(1)
+
+
+pair<int,int> findDuplicateAndMissing(vector<int> nums){
     return {};
 }
 
 int main(){
     cout << findMissing({3,0,1}) << endl;
+
+    cout << findDuplicateAndMissing({}) << endl;
 
 
 
