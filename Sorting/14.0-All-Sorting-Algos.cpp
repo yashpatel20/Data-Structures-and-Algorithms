@@ -195,6 +195,27 @@ int getMax(vector<int> &arr, int n)
 
 void countSort(vector<int> &arr, int n, int exp)
 {
+    vector<int> output(n);
+    vector<int> count(10, 0);
+
+    //fill the count array
+    for (int i = 0; i < n; i++)
+        count[(arr[i] / exp) % 10]++;
+
+    //add elements in count to get indexes
+    for (int i = 1; i < 10; i++)
+        count[i] += count[i - 1];
+
+    //fill the output array, stable
+    for (int i = n - 1; i >= 0; i--)
+    {
+        output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+        count[(arr[i] / exp) % 10]--;
+    }
+
+    //copy to arr
+    for (int i = 0; i < n; i++)
+        arr[i] = output[i];
 }
 
 void RadixSort(vector<int> &arr, int n)
@@ -202,16 +223,18 @@ void RadixSort(vector<int> &arr, int n)
     //Find max to get number of digits
     int m = getMax(arr, n);
     //Do counting sort for every digit
-    for (int exp = 1; m / exp >= 0; exp *= 10)
-    {
+    for (int exp = 1; m / exp > 0; exp *= 10)
         countSort(arr, n, exp);
-    }
+}
+
+void BucketSort()
+{
 }
 
 int main()
 {
-    vector<int> nums({4, 3, 2, 1, 0});
-    auto arr = CountingSort(nums);
-    for (auto i : arr)
+    vector<int> nums({4, 3, 2, 1, 5});
+    RadixSort(nums, 5);
+    for (auto i : nums)
         cout << i << " ";
 }
